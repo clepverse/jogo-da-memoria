@@ -1,5 +1,10 @@
 function onLoad() {
-  console.log(`A tela carregou!!!`, Tela, JogoDaMemoria);
+  const dependencias = {
+    tela: Tela,
+  };
+
+  const jogoDaMemoria = new JogoDaMemoria(dependencias);
+  jogoDaMemoria.inicializar();
 }
 
 window.onload = onLoad;
