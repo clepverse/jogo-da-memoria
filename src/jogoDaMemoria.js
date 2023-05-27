@@ -94,6 +94,8 @@ class JogoDaMemoria {
           if (this.heroisEncontrados === this.heroisIniciais.length) {
             this.tela.pararMusicaDeFundo();
             this.tela.reproduzirMusicaPontuacao();
+
+            this.heroisEncontrados = 0;
           }
 
           this.heroisEncontrados++;
