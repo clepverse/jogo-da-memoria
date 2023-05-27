@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <script src="./index.js"></script>
+    <script src="./src/util.js"></script>
     <script src="./src/tela.js"></script>
     <script src="./src/jogoDaMemoria.js"></script>
 
@@ -24,7 +25,15 @@
       </button>
       <button type="button" class="btn btn-danger" id="mostrar-tudo">Mostrar tudo</button>
     </div>
+
+    <div id="carregando" class="column container-fluid invisible">
+      <strong id="contador">Começando em 1...</strong>
+      <div class="spinner-border text-warning spinner-border-sm" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
     <br />
+
     <div id="conteudo" class="row"></div>
 
     <div class="row container-fluid">
