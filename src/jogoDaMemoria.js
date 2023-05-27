@@ -19,6 +19,7 @@ class JogoDaMemoria {
     this.tela.atualizarImagens(this.heroisIniciais);
     this.tela.configurarBotaoJogar(this.jogar.bind(this));
     this.tela.configurarBotaoVerificarSelecao(this.verificarSelecao.bind(this));
+    this.tela.configurarBotaoMostrarTudo(this.mostrarHeroisEscondidos.bind(this));
   }
 
   async embaralhar() {
@@ -80,6 +81,16 @@ class JogoDaMemoria {
       default:
         break;
     }
+  }
+
+  mostrarHeroisEscondidos() {
+    const heroisEscondidos = this.heroisEscondidos;
+    for (const heroi of heroisEscondidos) {
+      const { img } = this.heroisIniciais.find(({ nome }) => heroi.nome === nome);
+      heroi.img = img;
+    }
+
+    this.tela.atualizarImagens(heroisEscondidos);
   }
 
   jogar() {

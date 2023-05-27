@@ -6,6 +6,7 @@ const ID_MENSAGEM = 'mensagem';
 const CLASSE_INVISIVEL = 'invisible';
 const ID_CARREGANDO = 'carregando';
 const ID_CONTADOR = 'contador';
+const ID_MOSTRAR_TUDO = 'mostrarTudo';
 
 const MENSAGENS = {
   sucesso: {
@@ -109,5 +110,10 @@ class Tela {
   static limparContador(idDoIntervalo) {
     clearInterval(idDoIntervalo);
     document.getElementById(ID_CONTADOR).innerHTML = '';
+  }
+
+  static configurarBotaoMostrarTudo(funcaoOnClick) {
+    const btnMostrarTudo = document.getElementById(ID_MOSTRAR_TUDO);
+    btnMostrarTudo.onclick = funcaoOnClick;
   }
 }
