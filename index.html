@@ -19,14 +19,24 @@
   </head>
   <body class="container-fluid">
     <br />
-    <div class="column container-fluid">
-      <button type="button" class="btn btn-success" id="jogar">
+    <div class="column container-fluid d-flex justify-content-center">
+      <button
+        type="button"
+        class="btn btn-success p-2"
+        id="jogar"
+        style="margin-right: 12px"
+      >
         Clique aqui para iniciar
       </button>
-      <button type="button" class="btn btn-danger" id="mostrarTudo">Mostrar tudo</button>
+      <button type="button" class="btn btn-danger p-2" id="mostrarTudo">
+        Mostrar tudo
+      </button>
     </div>
-
-    <div id="carregando" class="column container-fluid invisible">
+    <br />
+    <div
+      id="carregando"
+      class="column container-fluid invisible d-flex justify-content-center align-items-center"
+    >
       <strong id="contador">Começando em 1...</strong>
       <div class="spinner-border text-warning spinner-border-sm" role="status">
         <span class="visually-hidden">Carregando...</span>
@@ -39,14 +49,13 @@
     <div class="row container-fluid">
       <div id="mensagem" class="alert alert-success invisible" role="alert">
         Combinação correta!
-        <!-- <h4 class="alert-heading">Parabéns!</h4>
-        <p>Você conseguiu completar o jogo!</p>
-        <hr />
-        <p class="mb-0">Você fez 10 pontos.</p> -->
       </div>
     </div>
 
-    <!-- <div class="row container-fluid">
+    <div
+      class="row container-fluid d-flex justify-content-center"
+      style="margin-bottom: 20px"
+    >
       <div class="col-4">
         <div class="card">
           <div class="card-body">
@@ -63,14 +72,6 @@
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Tempo</h5>
-            <p class="card-text" id="tempo">0</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    </div>
   </body>
 </html>

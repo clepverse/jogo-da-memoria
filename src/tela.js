@@ -7,6 +7,8 @@ const CLASSE_INVISIVEL = 'invisible';
 const ID_CARREGANDO = 'carregando';
 const ID_CONTADOR = 'contador';
 const ID_MOSTRAR_TUDO = 'mostrarTudo';
+const ID_PONTUACAO = 'pontuacao';
+const ID_TENTATIVAS = 'tentativas';
 
 const MENSAGENS = {
   sucesso: {
@@ -22,7 +24,7 @@ const MENSAGENS = {
 class Tela {
   static obterCodigoHtml(item) {
     return `
-      <div class="col-md-3">
+      <div class="col-md-3 d-flex justify-content-center">
         <div class="card" style="width: 50%" onclick="window.verificarSelecao('${item.id}', '${item.nome}')">
           <img src="${item.img}" name="${item.nome}" class="card-img-top" alt="..." />
         </div>
@@ -115,5 +117,15 @@ class Tela {
   static configurarBotaoMostrarTudo(funcaoOnClick) {
     const btnMostrarTudo = document.getElementById(ID_MOSTRAR_TUDO);
     btnMostrarTudo.onclick = funcaoOnClick;
+  }
+
+  static atualizarPontuacao(pontuacao) {
+    const elementoPontuacao = document.getElementById(ID_PONTUACAO);
+    elementoPontuacao.innerText = pontuacao;
+  }
+
+  static atualizarTentativas(tentativas) {
+    const elementoTentativas = document.getElementById(ID_TENTATIVAS);
+    elementoTentativas.innerText = tentativas;
   }
 }

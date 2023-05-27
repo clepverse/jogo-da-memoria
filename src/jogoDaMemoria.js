@@ -3,6 +3,9 @@ class JogoDaMemoria {
     this.tela = tela;
     this.util = util;
 
+    this.pontuacao = 0;
+    this.tentativas = 0;
+
     this.heroisIniciais = [
       { img: './assets/emerald.png', nome: 'emerald' },
       { img: './assets/redstone.png', nome: 'redstone' },
@@ -23,6 +26,9 @@ class JogoDaMemoria {
   }
 
   async embaralhar() {
+    this.tela.atualizarTentativas(0);
+    this.tela.atualizarPontuacao(0);
+
     const copias = this.heroisIniciais
       .concat(this.heroisIniciais)
       .map((item) => {
@@ -65,17 +71,22 @@ class JogoDaMemoria {
 
     switch (heroisSelecionados) {
       case 0:
+        this.aumentarTentativas();
         this.heroisSelecionados.push(item);
+
         break;
       case 1:
+        this.aumentarTentativas();
         const [opcao1] = this.heroisSelecionados;
         this.heroisSelecionados = [];
         if (opcao1.nome === item.nome && opcao1.id !== item.id) {
           this.exibirHerois(item.nome);
           this.tela.exibirMensagem();
+          this.atualizarPontuacao(10);
           return;
         }
 
+        this.atualizarPontuacao(-10);
         this.tela.exibirMensagem(false);
         break;
       default:
@@ -91,6 +102,19 @@ class JogoDaMemoria {
     }
 
     this.tela.atualizarImagens(heroisEscondidos);
+  }
+
+  atualizarPontuacao(pontos) {
+    this.pontuacao += pontos;
+    if (this.pontuacao < 0) {
+      this.pontuacao = 0;
+    }
+    this.tela.atualizarPontuacao(this.pontuacao);
+  }
+
+  aumentarTentativas() {
+    this.tentativas++;
+    this.tela.atualizarTentativas(this.tentativas);
   }
 
   jogar() {
