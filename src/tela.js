@@ -26,7 +26,7 @@ const MENSAGENS = {
 class Tela {
   static obterCodigoHtml(item) {
     return `
-      <div class="col-md-3 d-flex justify-content-center">
+      <div class="col-md-3 d-flex justify-content-center" style="margin-bottom: 20px">
         <div class="card" style="width: 50%" onclick="window.verificarSelecao('${item.id}', '${item.nome}')">
           <img src="${item.img}" name="${item.nome}" class="card-img-top" alt="..." />
         </div>
@@ -137,8 +137,14 @@ class Tela {
   }
 
   static reproduzirMusicaDeFundo() {
-    const audioPontuacao = document.getElementById(ID_AUDIO_DE_FUNDO);
-    audioPontuacao.play();
+    const audioDeFundo = document.getElementById(ID_AUDIO_DE_FUNDO);
+
+    audioDeFundo.addEventListener('ended', function () {
+      audioDeFundo.currentTime = 0;
+      audioDeFundo.play();
+    });
+
+    audioDeFundo.play();
   }
 
   static pararMusicaDeFundo() {
