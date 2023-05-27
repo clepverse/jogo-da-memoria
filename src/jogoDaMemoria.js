@@ -16,6 +16,8 @@ class JogoDaMemoria {
     this.iconePadrao = './assets/background-card.png';
     this.heroisEscondidos = [];
     this.heroisSelecionados = [];
+
+    this.heroisEncontrados = 1;
   }
 
   inicializar() {
@@ -48,6 +50,8 @@ class JogoDaMemoria {
 
     this.tela.limparContador(idDoIntervalo);
 
+    this.tela.reproduzirMusicaDeFundo();
+
     this.esconderHerois(copias);
     this.tela.exibirCarregando(false);
   }
@@ -79,21 +83,31 @@ class JogoDaMemoria {
         break;
       case 1:
         this.aumentarTentativas();
+
         const [opcao1] = this.heroisSelecionados;
         this.heroisSelecionados = [];
         if (opcao1.nome === item.nome && opcao1.id !== item.id) {
           this.exibirHerois(item.nome);
           this.tela.exibirMensagem();
           this.atualizarPontuacao(10);
-          this.tela.reproduzirMusicaPontuacao();
+
+          if (this.heroisEncontrados === this.heroisIniciais.length) {
+            this.tela.pararMusicaDeFundo();
+            this.tela.reproduzirMusicaPontuacao();
+          }
+
+          this.heroisEncontrados++;
           return;
         }
 
         this.tela.exibirMensagem(false);
         break;
-      default:
-        break;
     }
+
+    console.log({
+      heroisEncontrados: this.heroisEncontrados,
+      heroisIniciais: this.heroisIniciais,
+    });
   }
 
   mostrarHeroisEscondidos() {

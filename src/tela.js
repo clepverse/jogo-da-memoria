@@ -10,6 +10,7 @@ const ID_MOSTRAR_TUDO = 'mostrarTudo';
 const ID_PONTUACAO = 'pontuacao';
 const ID_TENTATIVAS = 'tentativas';
 const ID_AUDIO_PONTUAÇÃO = 'audioPontuacao';
+const ID_AUDIO_DE_FUNDO = 'audioDeFundo';
 
 const MENSAGENS = {
   sucesso: {
@@ -133,5 +134,16 @@ class Tela {
   static reproduzirMusicaPontuacao() {
     const audioPontuacao = document.getElementById(ID_AUDIO_PONTUAÇÃO);
     audioPontuacao.play();
+  }
+
+  static reproduzirMusicaDeFundo() {
+    const audioPontuacao = document.getElementById(ID_AUDIO_DE_FUNDO);
+    audioPontuacao.play();
+  }
+
+  static pararMusicaDeFundo() {
+    const audioPontuacao = document.getElementById(ID_AUDIO_DE_FUNDO);
+    audioPontuacao.pause();
+    audioPontuacao.currentTime = 0;
   }
 }
