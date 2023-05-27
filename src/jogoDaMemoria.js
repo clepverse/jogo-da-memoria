@@ -8,6 +8,9 @@ class JogoDaMemoria {
       { img: './assets/rock-badge.png', nome: 'rock-badge' },
       { img: './assets/yugi.png', nome: 'yugi' },
     ];
+
+    this.iconePadrao = './assets/background-card.png';
+    this.heroisEscondidos = [];
   }
 
   inicializar() {
@@ -24,6 +27,20 @@ class JogoDaMemoria {
       .sort(() => Math.random() - 0.5);
 
     this.tela.atualizarImagens(copias);
+    setTimeout(() => {
+      this.esconderHerois(copias);
+    }, 2000);
+  }
+
+  esconderHerois(herois) {
+    const heroisOcultos = herois.map(({ nome, id }) => ({
+      id,
+      nome,
+      img: this.iconePadrao,
+    }));
+
+    this.tela.atualizarImagens(heroisOcultos);
+    this.heroisEscondidos = heroisOcultos;
   }
 
   jogar() {
