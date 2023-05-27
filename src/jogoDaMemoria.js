@@ -32,7 +32,11 @@ class JogoDaMemoria {
     this.tela.atualizarImagens(copias);
     this.tela.exibirCarregando();
 
-    await this.util.timeout(1000);
+    const idDoIntervalo = this.tela.iniciarContador();
+
+    await this.util.timeout(3000);
+
+    this.tela.limparContador(idDoIntervalo);
 
     this.esconderHerois(copias);
     this.tela.exibirCarregando(false);

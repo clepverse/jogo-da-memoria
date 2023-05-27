@@ -84,4 +84,30 @@ class Tela {
 
     carregando.classList.add(CLASSE_INVISIVEL);
   }
+
+  static iniciarContador() {
+    let contarAte = 3;
+    const elementoContador = document.getElementById(ID_CONTADOR);
+    const identificadorNoTexto = '$$contador';
+
+    function obterTextoSegundos(contarAte) {
+      return contarAte === 1 ? 'segundo' : 'segundos';
+    }
+
+    const atualizarTexto = () => {
+      const textoPadrao = `Começando em ${identificadorNoTexto} ${obterTextoSegundos(
+        contarAte,
+      )}...`;
+      elementoContador.innerHTML = textoPadrao.replace(identificadorNoTexto, contarAte--);
+    };
+
+    atualizarTexto();
+    const idDoIntervalo = setInterval(atualizarTexto, 1000);
+    return idDoIntervalo;
+  }
+
+  static limparContador(idDoIntervalo) {
+    clearInterval(idDoIntervalo);
+    document.getElementById(ID_CONTADOR).innerHTML = '';
+  }
 }
