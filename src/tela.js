@@ -9,6 +9,7 @@ const ID_CONTADOR = 'contador';
 const ID_MOSTRAR_TUDO = 'mostrarTudo';
 const ID_PONTUACAO = 'pontuacao';
 const ID_TENTATIVAS = 'tentativas';
+const ID_AUDIO_PONTUAÇÃO = 'audioPontuacao';
 
 const MENSAGENS = {
   sucesso: {
@@ -127,5 +128,10 @@ class Tela {
   static atualizarTentativas(tentativas) {
     const elementoTentativas = document.getElementById(ID_TENTATIVAS);
     elementoTentativas.innerText = tentativas;
+  }
+
+  static reproduzirMusicaPontuacao() {
+    const audioPontuacao = document.getElementById(ID_AUDIO_PONTUAÇÃO);
+    audioPontuacao.play();
   }
 }

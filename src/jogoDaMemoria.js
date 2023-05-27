@@ -26,8 +26,11 @@ class JogoDaMemoria {
   }
 
   async embaralhar() {
-    this.tela.atualizarTentativas(0);
-    this.tela.atualizarPontuacao(0);
+    this.pontuacao = 0;
+    this.tentativas = 0;
+
+    this.tela.atualizarTentativas(this.tentativas);
+    this.tela.atualizarPontuacao(this.pontuacao);
 
     const copias = this.heroisIniciais
       .concat(this.heroisIniciais)
@@ -71,7 +74,6 @@ class JogoDaMemoria {
 
     switch (heroisSelecionados) {
       case 0:
-        this.aumentarTentativas();
         this.heroisSelecionados.push(item);
 
         break;
@@ -83,10 +85,10 @@ class JogoDaMemoria {
           this.exibirHerois(item.nome);
           this.tela.exibirMensagem();
           this.atualizarPontuacao(10);
+          this.tela.reproduzirMusicaPontuacao();
           return;
         }
 
-        this.atualizarPontuacao(-10);
         this.tela.exibirMensagem(false);
         break;
       default:
@@ -106,9 +108,7 @@ class JogoDaMemoria {
 
   atualizarPontuacao(pontos) {
     this.pontuacao += pontos;
-    if (this.pontuacao < 0) {
-      this.pontuacao = 0;
-    }
+
     this.tela.atualizarPontuacao(this.pontuacao);
   }
 

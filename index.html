@@ -10,6 +10,7 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
+
     <script src="./index.js"></script>
     <script src="./src/util.js"></script>
     <script src="./src/tela.js"></script>
@@ -46,11 +47,13 @@
 
     <div id="conteudo" class="row"></div>
 
-    <div class="row container-fluid">
+    <div class="row container-fluid" style="margin-top: 10px">
       <div id="mensagem" class="alert alert-success invisible" role="alert">
         Combinação correta!
       </div>
     </div>
+
+    <audio id="audioPontuacao" src="./assets/pontuacao.mp3"></audio>
 
     <div
       class="row container-fluid d-flex justify-content-center"
