@@ -97,7 +97,7 @@ class JogoDaMemoria {
           this.tela.exibirMensagem();
           this.atualizarPontuacao(10);
 
-          if (this.heroisEncontrados === this.heroisIniciais.length) {
+          if (this.heroisEncontrados === this.heroisIniciais.length / 2) {
             this.tela.pararMusicaDeFundo();
             this.tela.reproduzirMusicaPontuacao();
 
