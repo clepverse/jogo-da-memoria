@@ -11,6 +11,10 @@ class JogoDaMemoria {
       { img: './assets/redstone.png', nome: 'redstone' },
       { img: './assets/rock-badge.png', nome: 'rock-badge' },
       { img: './assets/yugi.png', nome: 'yugi' },
+      { img: './assets/isaac.png', nome: 'isaac' },
+      { img: './assets/jean.png', nome: 'jean' },
+      { img: './assets/salomao.png', nome: 'salomao' },
+      { img: './assets/vinicius.png', nome: 'vinicius' },
     ];
 
     this.iconePadrao = './assets/background-card.png';
@@ -34,8 +38,10 @@ class JogoDaMemoria {
     this.tela.atualizarTentativas(this.tentativas);
     this.tela.atualizarPontuacao(this.pontuacao);
 
-    const copias = this.heroisIniciais
-      .concat(this.heroisIniciais)
+    const heroisSelecionados = this.util.shuffle(this.heroisIniciais).slice(0, 4);
+
+    const copias = [...heroisSelecionados, ...heroisSelecionados]
+      .concat(this.heroisSelecionados)
       .map((item) => {
         return Object.assign({}, item, { id: Math.random() / 0.5 });
       })
@@ -105,11 +111,6 @@ class JogoDaMemoria {
         this.tela.exibirMensagem(false);
         break;
     }
-
-    console.log({
-      heroisEncontrados: this.heroisEncontrados,
-      heroisIniciais: this.heroisIniciais,
-    });
   }
 
   mostrarHeroisEscondidos() {
