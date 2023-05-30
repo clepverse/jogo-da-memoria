@@ -152,4 +152,12 @@ class Tela {
     audioPontuacao.pause();
     audioPontuacao.currentTime = 0;
   }
+
+  static pararVideo() {
+    let modal = document.getElementById('meuModal');
+    let video = document.getElementById('videoPlayer');
+    modal.addEventListener('hidden.bs.modal', function () {
+      video.pause();
+    });
+  }
 }

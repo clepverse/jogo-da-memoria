@@ -136,5 +136,6 @@ class JogoDaMemoria {
 
   jogar() {
     this.embaralhar();
+    this.tela.pararVideo();
   }
 }
